@@ -8,6 +8,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Cairo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
+  /* إصلاح مشكلة الإزاحة الجانبية في الهواتف */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden !important; /* يمنع الموقع من التمدد خارج حدود الشاشة */
+  }
+  
+  #hero, .hero-main-container, .hero-layout {
+    width: 100vw !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  /* تصغير البطاقات في الهاتف لتناسب العرض */
+  .hero-left-stats {
+    width: 100% !important;
+    flex-direction: row !important; /* لجعل البطاقات بجانب بعضها بدل فوق بعض */
+    justify-content: center;
+  }
+  .stat-card {
+    width: 30% !important;
+    padding: 10px !important;
+  }
+}
 #hero { position: relative; overflow: hidden; }
 
 .video-container {
