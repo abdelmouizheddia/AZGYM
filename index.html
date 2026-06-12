@@ -563,14 +563,25 @@ footer{ background:var(--black); border-top:1px solid var(--edge); padding:2.5re
   .plan.hot:hover{transform:translateY(-5px)}
   #cta-band{padding:3.5rem 2rem;flex-direction:column;align-items:flex-start}
 }
-@media(max-width:600px){
-  .srv-grid{grid-template-columns:1fr}
-  .about-features{grid-template-columns:1fr}
-  .hero-actions{flex-direction:column;align-items:flex-start}
-  .btn-lime,.btn-ghost{width:100%;text-align:center;display:block}
-  .trainers-grid{grid-template-columns:1fr 1fr}
-  .form-row{grid-template-columns:1fr}
-  footer{flex-direction:column;align-items:flex-start;gap:1.25rem}
+@media (max-width: 900px) {
+  #hero {
+    grid-template-columns: 1fr !important; /* تحويل الشبكة لعمود واحد */
+    padding: 0 !important;
+    height: auto !important; /* السماح للعناصر بأخذ مساحتها */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* جعل العناصر في الهاتف تأخذ العرض الكامل وتتوسط */
+  .hero-left, .hero-right, .hero-center-content {
+    width: 100% !important;
+    padding: 20px !important;
+  }
+
+  /* إخفاء العناصر التي تسبب توسعاً عرضياً */
+  .hero-stripes, .hero-glow { display: none !important; }
 }
 </style>
 </head>
