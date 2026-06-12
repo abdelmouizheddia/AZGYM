@@ -530,38 +530,48 @@ footer{ background:var(--black); border-top:1px solid var(--edge); padding:2.5re
   .trainers-grid{grid-template-columns:1fr 1fr}
 }
 /* ═══════════════ الحل الشامل للموبايل ═══════════════ */
+/* ═══════════════ الحل النهائي للموبايل ═══════════════ */
 @media (max-width: 768px) {
-  /* 1. إصلاح تداخل القائمة العلوية مع المحتوى */
+  /* 1. إصلاح القائمة العلوية */
   #nav {
-    position: sticky !important; /* بدلاً من fixed لتأخذ مكانها الطبيعي */
-    height: 60px !important;
+    position: relative !important; /* تغيير من fixed لـ relative لمنع تداخلها */
+    padding: 1rem !important;
   }
-  
-  /* إعطاء مساحة للمحتوى تحت النافبار */
-  body { padding-top: 60px !important; }
+  body { padding-top: 0 !important; }
 
-  /* 2. إصلاح مشكلة البطاقات المتداخلة في الـ Services والـ Pricing */
-  .srv-grid, .plans {
+  /* 2. إصلاح الهيرو (الترتيب العمودي) */
+  #hero {
     display: flex !important;
     flex-direction: column !important;
-    gap: 15px !important;
+    padding: 20px !important;
+    height: auto !important;
+    min-height: 100vh !important;
   }
-  
-  .plan, .srv {
-    width: 90% !important; /* تصغير العرض قليلاً لعدم التداخل */
+
+  /* 3. إخفاء العناصر الزائدة التي تسبب إزاحة */
+  .hero-stripes, .hero-glow, .hero-center-typography, .hero-right, .hero-scroll {
+    display: none !important;
+  }
+
+  /* 4. توسيط المحتوى */
+  .hero-center-content {
+    width: 100% !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-top: 20px !important;
+  }
+
+  /* 5. إصلاح عرض البطاقات والقوائم */
+  .srv-grid, .plans, .trainers-grid {
+    grid-template-columns: 1fr !important;
+    width: 95% !important;
     margin: 0 auto !important;
   }
 
-  /* 3. جعل زر الواتساب العائم أقل تأثيراً */
-  .wa-float {
-    z-index: 99 !important; /* تصغير الـ Z-index ليكون تحت العناصر الهامة */
-    bottom: 10px !important;
-    left: 10px !important;
-    transform: scale(0.8) !important; /* تصغير حجمه قليلاً */
-  }
-
-  /* 4. التأكد من أن صور البطاقات لا تخرج عن الإطار */
-  .plan-body { width: 100% !important; }
+  /* 6. إصلاح الخريطة */
+  .contact-map-container { height: 200px !important; width: 100% !important; }
 }
 </style>
 </head>
