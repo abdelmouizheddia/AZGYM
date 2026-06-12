@@ -529,60 +529,47 @@ footer{ background:var(--black); border-top:1px solid var(--edge); padding:2.5re
   .about-visual{aspect-ratio:16/9}
   .trainers-grid{grid-template-columns:1fr 1fr}
 }
-/* ════════════════════════════════════════════════════
-   الإصلاح الشامل للموبايل (انسخ هذا وضعه في نهاية الـ style)
-════════════════════════════════════════════════════ */
-@media (max-width: 768px) {
-  /* تصفير الهوامش ومنع التمدد */
+/* ═══════════════ حل نهائي: إجبار الهاتف على العرض الصحيح ═══════════════ */
+@media screen and (max-width: 768px) {
+  /* 1. منع أي عنصر من تجاوز عرض الشاشة */
   html, body {
     width: 100% !important;
+    max-width: 100vw !important;
     overflow-x: hidden !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  /* إجبار الهيرو على ترتيب العناصر عمودياً */
-  #hero {
+  /* 2. تصغير الهيرو ليكون مناسباً للهاتف */
+  #hero, .section, footer, #nav {
+    width: 100vw !important;
+    box-sizing: border-box !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  /* 3. إجبار كافة الحاويات (Grid/Flex) على ترتيب العناصر عمودياً */
+  #hero, #about, #services, #pricing, #schedule, #trainers, #contact, .srv-grid, .plans, .form-row {
     display: flex !important;
     flex-direction: column !important;
-    padding: 20px 10px !important;
-    min-height: 100vh !important;
+    grid-template-columns: 1fr !important;
     width: 100% !important;
   }
 
-  /* إخفاء العناصر التي تسبب عرضاً إضافياً */
+  /* 4. معالجة العناصر التي كانت تخرج عن الإطار */
+  .contact-map-container, .contact-form, .contact-info, .plan, .srv {
+    width: 95% !important;
+    margin: 10px auto !important;
+  }
+
+  /* 5. إخفاء العناصر الزخرفية التي تسبب عرضاً إضافياً */
   .hero-stripes, .hero-glow, .hero-center-typography, .hero-scroll {
     display: none !important;
   }
 
-  /* جعل المحتوى في المنتصف تماماً */
-  .hero-center-content, .hero-left, .hero-right {
-    width: 100% !important;
-    padding: 10px !important;
-    align-items: center !important;
-    text-align: center !important;
-  }
-
-  /* إصلاح شبكة الخدمات والخطط */
-  .srv-grid, .plans {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 15px !important;
-    width: 95% !important;
-    margin: 0 auto !important;
-  }
-
-  /* ضبط عرض البطاقات */
-  .plan, .srv, .trainer-card, .stat-card {
-    width: 100% !important;
-    margin: 0 !important;
-  }
-
-  /* تصحيح محاذاة الخريطة */
-  .contact-map-container { width: 100% !important; }
-
-  /* النافبار: جعلها تتناسب مع الموبايل */
-  #nav { padding: 0 1rem !important; }
+  /* 6. تحسين حجم النصوص في الموبايل */
+  .section-title { font-size: 2rem !important; }
+  .hero-desc { font-size: 0.9rem !important; max-width: 90% !important; }
 }
 </style>
 </head>
