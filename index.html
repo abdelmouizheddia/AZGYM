@@ -561,7 +561,27 @@ footer{ background:var(--black); border-top:1px solid var(--edge); padding:2.5re
     width: 95% !important;
     margin: 10px auto !important;
   }
+/* 1. تصغير عناوين الخدمات في الهاتف */
+  .srv-name {
+    font-size: 1.1rem !important; /* تقليل حجم الخط ليناسب الهاتف */
+    line-height: 1.2 !important;
+    word-break: break-all !important; /* السماح بكسر الكلمة إذا كانت طويلة جداً */
+  }
 
+  /* 2. تحسين مظهر صندوق الخدمة */
+  .srv {
+    padding: 1.5rem !important; /* تقليل المساحات الداخلية */
+    min-height: auto !important;
+  }
+
+  /* 3. إزاحة الرقم الخفي (01, 02) لكي لا يغطي النص */
+  .srv-ghost-num {
+    font-size: 3rem !important;
+    top: 0.2rem !important;
+    right: 0.5rem !important;
+    opacity: 0.1 !important;
+  }
+}
   /* 5. إخفاء العناصر الزخرفية التي تسبب عرضاً إضافياً */
   .hero-stripes, .hero-glow, .hero-center-typography, .hero-scroll {
     display: none !important;
