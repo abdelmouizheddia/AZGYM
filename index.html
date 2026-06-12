@@ -529,42 +529,60 @@ footer{ background:var(--black); border-top:1px solid var(--edge); padding:2.5re
   .about-visual{aspect-ratio:16/9}
   .trainers-grid{grid-template-columns:1fr 1fr}
 }
-/* ═══════════════ الحل النهائي والوحيد للموبايل ═══════════════ */
+/* ════════════════════════════════════════════════════
+   الإصلاح الشامل للموبايل (انسخ هذا وضعه في نهاية الـ style)
+════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  /* 1. منع التمدد العرضي نهائياً */
+  /* تصفير الهوامش ومنع التمدد */
   html, body {
     width: 100% !important;
     overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* 2. ضبط الأقسام لتأخذ العرض الكامل بدون هوامش مبالغ فيها */
-  .section { padding: 4rem 1rem !important; }
-
-  /* 3. إصلاح البطاقات (Pricing & Services) */
-  .plans, .srv-grid, .trainers-grid {
+  /* إجبار الهيرو على ترتيب العناصر عمودياً */
+  #hero {
     display: flex !important;
     flex-direction: column !important;
-    gap: 20px !important;
+    padding: 20px 10px !important;
+    min-height: 100vh !important;
     width: 100% !important;
   }
 
-  /* 4. إجبار النصوص على الالتفاف داخل البطاقات */
-  .plan, .srv, .trainer-card {
+  /* إخفاء العناصر التي تسبب عرضاً إضافياً */
+  .hero-stripes, .hero-glow, .hero-center-typography, .hero-scroll {
+    display: none !important;
+  }
+
+  /* جعل المحتوى في المنتصف تماماً */
+  .hero-center-content, .hero-left, .hero-right {
+    width: 100% !important;
+    padding: 10px !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* إصلاح شبكة الخدمات والخطط */
+  .srv-grid, .plans {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
     width: 95% !important;
     margin: 0 auto !important;
   }
 
-  /* 5. إصلاح مشكلة النص المقطوع في القسم About */
-  .about-text, .section-sub, .contact-blurb {
-    word-break: break-word !important;
-    hyphens: auto !important;
+  /* ضبط عرض البطاقات */
+  .plan, .srv, .trainer-card, .stat-card {
+    width: 100% !important;
+    margin: 0 !important;
   }
 
-  /* 6. إصلاح الخريطة */
-  .contact-map-container {
-    width: 100% !important;
-    height: 200px !important;
-  }
+  /* تصحيح محاذاة الخريطة */
+  .contact-map-container { width: 100% !important; }
+
+  /* النافبار: جعلها تتناسب مع الموبايل */
+  #nav { padding: 0 1rem !important; }
 }
 </style>
 </head>
