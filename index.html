@@ -529,56 +529,44 @@ footer{ background:var(--black); border-top:1px solid var(--edge); padding:2.5re
   .about-visual{aspect-ratio:16/9}
   .trainers-grid{grid-template-columns:1fr 1fr}
 }
-/* ═══════════════ إصلاح نهائي للهاتف ═══════════════ */
+/* ═══════════════ الحل الشامل للموبايل ═══════════════ */
 @media (max-width: 768px) {
+  /* 1. منع التمدد الأفقي تماماً */
   html, body {
     width: 100% !important;
+    overflow-x: hidden !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow-x: hidden !important; /* هذا السطر يقتل الفراغ الجانبي */
   }
 
-  /* إجبار الهيرو على احتواء العناصر */
+  /* 2. تصغير الهيرو ليكون مناسباً للهاتف */
   #hero {
     width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 0 !important;
-    height: auto !important;
-    min-height: 100vh !important;
+    padding: 20px 10px !important;
   }
 
-  /* جعل حاوية الفيديو تتناسب مع عرض الهاتف */
-  .video-container {
-    position: absolute !important;
+  /* 3. جعل الخريطة مرنة (هذا هو سبب الفراغ في قسم الاتصال) */
+  .contact-map-container {
     width: 100% !important;
-    height: 100% !important;
-    z-index: 0 !important;
-    overflow: hidden !important;
+    max-width: 100% !important;
+    height: 200px !important;
   }
-
-  /* ضمان أن المحتوى يظهر فوق الفيديو بدون إزاحة */
-  .hero-center-content, .hero-right, .hero-left {
-    position: relative !important;
-    z-index: 2 !important;
+  
+  /* 4. التأكد من أن القائمة العلوية لا تتمدد */
+  #nav {
+    padding: 0 1rem !important;
     width: 100% !important;
-    padding: 15px !important;
-    margin: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
   }
 
-  /* تنسيق البطاقات في الهاتف */
-  .hero-right {
-    flex-direction: row !important;
-    justify-content: center !important;
-    gap: 10px !important;
+  /* 5. أي عنصر لديه عرض ثابت يتم تحويله لـ 100% */
+  .srv-grid, .plans, #contact, #about, .trainers-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    padding: 10px !important;
   }
-  .stat-card {
-    width: 30% !important;
-    padding: 10px 5px !important;
-  }
+
+  /* 6. إخفاء العناصر الزائدة */
+  .hero-stripes, .hero-glow { display: none !important; }
 }
 </style>
 </head>
