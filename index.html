@@ -530,38 +530,39 @@ footer{ background:var(--black); border-top:1px solid var(--edge); padding:2.5re
   .trainers-grid{grid-template-columns:1fr 1fr}
 }
 /* ═══════════════ الحل الشامل للموبايل ═══════════════ */
-@media (max-width: 768px) {
-  /* 1. إصلاح تداخل النصوص وقطعها */
-  .section-title {
-    font-size: 2.5rem !important; /* تصغير العنوان ليلائم الهاتف */
-    line-height: 1.1 !important;
-  }
-  .section, #contact, #about {
-    padding: 3rem 1rem !important; /* تقليل الحواف الجانبية */
-  }
-
-  /* 2. إصلاح النصوص المقطوعة */
-  .about-text, .contact-blurb, .srv-desc {
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    max-width: 100% !important;
-  }
-
-  /* 3. إصلاح تداخل العناصر في Contact */
-  #contact {
-    display: flex !important;
-    flex-direction: column !important;
+@media (max-width: 770px) {
+  /* 1. إصلاح تداخل القائمة العلوية مع المحتوى */
+  #nav {
+    position: sticky !important; /* بدلاً من fixed لتأخذ مكانها الطبيعي */
+    height: 60px !important;
   }
   
-  /* 4. تعديل حجم اللوجو والعناوين لتكون أصغر في الهاتف */
-  .contact-logo img { height: 40px !important; }
-  .form-title { font-size: 1.5rem !important; }
+  /* إعطاء مساحة للمحتوى تحت النافبار */
+  body { padding-top: 60px !important; }
 
-  /* 5. منع تداخل زر الواتساب مع النماذج */
-  .wa-float {
-    z-index: 99 !important;
-    bottom: 20px !important;
+  /* 2. إصلاح مشكلة البطاقات المتداخلة في الـ Services والـ Pricing */
+  .srv-grid, .plans {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
   }
+  
+  .plan, .srv {
+    width: 90% !important; /* تصغير العرض قليلاً لعدم التداخل */
+    margin: 0 auto !important;
+  }
+
+  /* 3. جعل زر الواتساب العائم أقل تأثيراً */
+  .wa-float {
+    z-index: 99 !important; /* تصغير الـ Z-index ليكون تحت العناصر الهامة */
+    bottom: 10px !important;
+    left: 10px !important;
+    transform: scale(0.8) !important; /* تصغير حجمه قليلاً */
+  }
+
+  /* 4. التأكد من أن صور البطاقات لا تخرج عن الإطار */
+  .plan-body { width: 100% !important; }
+}
 }
 </style>
 </head>
