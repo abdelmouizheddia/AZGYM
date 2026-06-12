@@ -529,49 +529,42 @@ footer{ background:var(--black); border-top:1px solid var(--edge); padding:2.5re
   .about-visual{aspect-ratio:16/9}
   .trainers-grid{grid-template-columns:1fr 1fr}
 }
-/* ═══════════════ الحل الشامل للموبايل ═══════════════ */
-/* ═══════════════ الحل النهائي للموبايل ═══════════════ */
+/* ═══════════════ الحل النهائي والوحيد للموبايل ═══════════════ */
 @media (max-width: 768px) {
-  /* 1. إصلاح القائمة العلوية */
-  #nav {
-    position: relative !important; /* تغيير من fixed لـ relative لمنع تداخلها */
-    padding: 1rem !important;
-  }
-  body { padding-top: 0 !important; }
-
-  /* 2. إصلاح الهيرو (الترتيب العمودي) */
-  #hero {
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 20px !important;
-    height: auto !important;
-    min-height: 100vh !important;
-  }
-
-  /* 3. إخفاء العناصر الزائدة التي تسبب إزاحة */
-  .hero-stripes, .hero-glow, .hero-center-typography, .hero-right, .hero-scroll {
-    display: none !important;
-  }
-
-  /* 4. توسيط المحتوى */
-  .hero-center-content {
+  /* 1. منع التمدد العرضي نهائياً */
+  html, body {
     width: 100% !important;
-    text-align: center !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    margin-top: 20px !important;
+    overflow-x: hidden !important;
   }
 
-  /* 5. إصلاح عرض البطاقات والقوائم */
-  .srv-grid, .plans, .trainers-grid {
-    grid-template-columns: 1fr !important;
+  /* 2. ضبط الأقسام لتأخذ العرض الكامل بدون هوامش مبالغ فيها */
+  .section { padding: 4rem 1rem !important; }
+
+  /* 3. إصلاح البطاقات (Pricing & Services) */
+  .plans, .srv-grid, .trainers-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    width: 100% !important;
+  }
+
+  /* 4. إجبار النصوص على الالتفاف داخل البطاقات */
+  .plan, .srv, .trainer-card {
     width: 95% !important;
     margin: 0 auto !important;
   }
 
+  /* 5. إصلاح مشكلة النص المقطوع في القسم About */
+  .about-text, .section-sub, .contact-blurb {
+    word-break: break-word !important;
+    hyphens: auto !important;
+  }
+
   /* 6. إصلاح الخريطة */
-  .contact-map-container { height: 200px !important; width: 100% !important; }
+  .contact-map-container {
+    width: 100% !important;
+    height: 200px !important;
+  }
 }
 </style>
 </head>
