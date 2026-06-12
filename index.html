@@ -531,42 +531,37 @@ footer{ background:var(--black); border-top:1px solid var(--edge); padding:2.5re
 }
 /* ═══════════════ الحل الشامل للموبايل ═══════════════ */
 @media (max-width: 768px) {
-  /* 1. منع التمدد الأفقي تماماً */
-  html, body {
-    width: 100% !important;
-    overflow-x: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* 2. تصغير الهيرو ليكون مناسباً للهاتف */
-  #hero {
-    width: 100% !important;
-    padding: 20px 10px !important;
-  }
-
-  /* 3. جعل الخريطة مرنة (هذا هو سبب الفراغ في قسم الاتصال) */
-  .contact-map-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 200px !important;
+  /* 1. إصلاح تداخل القائمة العلوية مع المحتوى */
+  #nav {
+    position: sticky !important; /* بدلاً من fixed لتأخذ مكانها الطبيعي */
+    height: 60px !important;
   }
   
-  /* 4. التأكد من أن القائمة العلوية لا تتمدد */
-  #nav {
-    padding: 0 1rem !important;
-    width: 100% !important;
+  /* إعطاء مساحة للمحتوى تحت النافبار */
+  body { padding-top: 60px !important; }
+
+  /* 2. إصلاح مشكلة البطاقات المتداخلة في الـ Services والـ Pricing */
+  .srv-grid, .plans {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  
+  .plan, .srv {
+    width: 90% !important; /* تصغير العرض قليلاً لعدم التداخل */
+    margin: 0 auto !important;
   }
 
-  /* 5. أي عنصر لديه عرض ثابت يتم تحويله لـ 100% */
-  .srv-grid, .plans, #contact, #about, .trainers-grid {
-    grid-template-columns: 1fr !important;
-    width: 100% !important;
-    padding: 10px !important;
+  /* 3. جعل زر الواتساب العائم أقل تأثيراً */
+  .wa-float {
+    z-index: 99 !important; /* تصغير الـ Z-index ليكون تحت العناصر الهامة */
+    bottom: 10px !important;
+    left: 10px !important;
+    transform: scale(0.8) !important; /* تصغير حجمه قليلاً */
   }
 
-  /* 6. إخفاء العناصر الزائدة */
-  .hero-stripes, .hero-glow { display: none !important; }
+  /* 4. التأكد من أن صور البطاقات لا تخرج عن الإطار */
+  .plan-body { width: 100% !important; }
 }
 </style>
 </head>
