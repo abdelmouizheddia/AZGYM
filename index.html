@@ -529,50 +529,56 @@ footer{ background:var(--black); border-top:1px solid var(--edge); padding:2.5re
   .about-visual{aspect-ratio:16/9}
   .trainers-grid{grid-template-columns:1fr 1fr}
 }
-/* ═══════════════ CSS RESET FOR MOBILE (نظام صارم للهاتف) ═══════════════ */
+/* ═══════════════ إصلاح نهائي للهاتف ═══════════════ */
 @media (max-width: 768px) {
-  /* إجبار الصفحة بالكامل على عدم تجاوز عرض الشاشة */
   html, body {
-    width: 100%;
+    width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow-x: hidden !important; /* هذا هو السطر الأهم لإلغاء الفراغ */
+    overflow-x: hidden !important; /* هذا السطر يقتل الفراغ الجانبي */
   }
 
-  /* إجبار الهيرو على أن يكون بحجم الشاشة فقط */
+  /* إجبار الهيرو على احتواء العناصر */
   #hero {
     width: 100% !important;
-    min-height: 100vh !important;
     display: flex !important;
     flex-direction: column !important;
     padding: 0 !important;
-    position: relative !important;
+    height: auto !important;
+    min-height: 100vh !important;
   }
 
-  /* جعل المحتوى يتناسب مع العرض الجديد */
-  .hero-main-container {
+  /* جعل حاوية الفيديو تتناسب مع عرض الهاتف */
+  .video-container {
+    position: absolute !important;
     width: 100% !important;
-    flex-direction: column !important;
-    padding: 20px !important;
-    margin: 0 !important;
+    height: 100% !important;
+    z-index: 0 !important;
+    overflow: hidden !important;
   }
 
-  /* إخفاء أي شيء عرضي قد يسبب مشكلة */
-  .hero-stripes, .hero-glow { display: none !important; }
+  /* ضمان أن المحتوى يظهر فوق الفيديو بدون إزاحة */
+  .hero-center-content, .hero-right, .hero-left {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    padding: 15px !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
 
-  /* تصغير الخطوط في الهاتف لتناسب المساحة */
-  .hero-eyebrow-large { font-size: 1rem !important; letter-spacing: 0.2em !important; }
-  .hero-logo-wrap img { max-width: 200px !important; }
-  
-  /* جعل البطاقات في صف واحد أو تحت بعضها بشكل منسق */
-  .hero-left-stats { 
-    flex-direction: row !important; 
-    flex-wrap: wrap !important;
+  /* تنسيق البطاقات في الهاتف */
+  .hero-right {
+    flex-direction: row !important;
     justify-content: center !important;
     gap: 10px !important;
-    width: 100% !important;
   }
-  .stat-card { width: 45% !important; padding: 10px !important; }
+  .stat-card {
+    width: 30% !important;
+    padding: 10px 5px !important;
+  }
 }
 </style>
 </head>
