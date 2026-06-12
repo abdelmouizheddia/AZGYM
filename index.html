@@ -529,36 +529,50 @@ footer{ background:var(--black); border-top:1px solid var(--edge); padding:2.5re
   .about-visual{aspect-ratio:16/9}
   .trainers-grid{grid-template-columns:1fr 1fr}
 }
-@media(max-width:900px){
-  .section{padding:5rem 2rem}
-  #nav{padding:0 1.5rem}
-  .nav-links{display:none}
-  .hamburger{display:flex}
-  .srv-grid{grid-template-columns:1fr 1fr}
-  .plans{grid-template-columns:1fr}
-  .plan.hot{transform:none}
-  .plan.hot:hover{transform:translateY(-5px)}
-  #cta-band{padding:3.5rem 2rem;flex-direction:column;align-items:flex-start}
-}
-@media (max-width: 900px) {
-  #hero {
-    grid-template-columns: 1fr !important; /* تحويل الشبكة لعمود واحد */
+/* ═══════════════ CSS RESET FOR MOBILE (نظام صارم للهاتف) ═══════════════ */
+@media (max-width: 768px) {
+  /* إجبار الصفحة بالكامل على عدم تجاوز عرض الشاشة */
+  html, body {
+    width: 100%;
+    margin: 0 !important;
     padding: 0 !important;
-    height: auto !important; /* السماح للعناصر بأخذ مساحتها */
+    overflow-x: hidden !important; /* هذا هو السطر الأهم لإلغاء الفراغ */
+  }
+
+  /* إجبار الهيرو على أن يكون بحجم الشاشة فقط */
+  #hero {
+    width: 100% !important;
+    min-height: 100vh !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
+    padding: 0 !important;
+    position: relative !important;
   }
 
-  /* جعل العناصر في الهاتف تأخذ العرض الكامل وتتوسط */
-  .hero-left, .hero-right, .hero-center-content {
+  /* جعل المحتوى يتناسب مع العرض الجديد */
+  .hero-main-container {
     width: 100% !important;
+    flex-direction: column !important;
     padding: 20px !important;
+    margin: 0 !important;
   }
 
-  /* إخفاء العناصر التي تسبب توسعاً عرضياً */
+  /* إخفاء أي شيء عرضي قد يسبب مشكلة */
   .hero-stripes, .hero-glow { display: none !important; }
+
+  /* تصغير الخطوط في الهاتف لتناسب المساحة */
+  .hero-eyebrow-large { font-size: 1rem !important; letter-spacing: 0.2em !important; }
+  .hero-logo-wrap img { max-width: 200px !important; }
+  
+  /* جعل البطاقات في صف واحد أو تحت بعضها بشكل منسق */
+  .hero-left-stats { 
+    flex-direction: row !important; 
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  .stat-card { width: 45% !important; padding: 10px !important; }
 }
 </style>
 </head>
